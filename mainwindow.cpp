@@ -160,16 +160,14 @@ void MainWindow::lcd_countDown()
     {
         ui->minsLabel->setText("Minute");
     }
+    else
+    {
+        ui->minsLabel->setText("Minutes");
+    }
     if (s - 1 == 1)
     {
         ui->secsLabel->setText("Second");
-    }
-    if (m - 1 == 0 && s - 1 == 0)
-    {
-        ui->minsLabel->setText("Minutes");
-        ui->secsLabel->setText("Seconds");
-    }
-    if (s - 1 == 0)
+    } else
     {
         ui->secsLabel->setText("Seconds");
     }
