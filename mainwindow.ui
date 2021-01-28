@@ -48,10 +48,19 @@
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="rightMargin">
+        <number>9</number>
+       </property>
        <item>
         <widget class="QLCDNumber" name="minsDisplay">
          <property name="enabled">
           <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Ignored" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
          <property name="font">
           <font>
@@ -60,6 +69,9 @@
          </property>
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="smallDecimalPoint">
           <bool>false</bool>
@@ -73,17 +85,52 @@
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="minsLabel">
+         <property name="text">
+          <string>Minutes</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QLCDNumber" name="secsDisplay">
          <property name="enabled">
           <bool>true</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <family>Arial</family>
+           <pointsize>13</pointsize>
           </font>
          </property>
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="contextMenuPolicy">
+          <enum>Qt::PreventContextMenu</enum>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
          </property>
          <property name="smallDecimalPoint">
           <bool>false</bool>
@@ -93,6 +140,13 @@
          </property>
          <property name="intValue" stdset="0">
           <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="secsLabel">
+         <property name="text">
+          <string>Seconds</string>
          </property>
         </widget>
        </item>

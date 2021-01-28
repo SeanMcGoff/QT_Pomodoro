@@ -125,6 +125,7 @@ void MainWindow::fullResetTimer()
 {
     ui->secsDisplay->display(0);
     timerstate = WORK;
+    iShortRestCount = 0;
     ui->minsDisplay->display(ui->workSpin->value());
     ui->topLabel->setText("Pomodoro Timer");
 }
@@ -147,27 +148,30 @@ void MainWindow::resetWindowColor()
     this->setPalette(palette);
 }
 
-//auto generated slot functions
-void MainWindow::on_startButton_clicked()
-{
-    if(timer->isActive())
-    {
-    stopTimer();
-    resetWindowColor();
-    }
-    else
-    {
-    this->setWindowGradient();
-    startTimer();
-    }
-
-}
-
 //countdown the LCD Screens
 void MainWindow::lcd_countDown()
 {
     int m = ui->minsDisplay->intValue();
     int s = ui->secsDisplay->intValue();
+    //removing the plurals
+    if (m - 1 == 1)
+    {
+        ui->minsLabel->setText("Minute");
+    }
+    if (s - 1 == 1)
+    {
+        ui->secsLabel->setText("Second");
+    }
+    if (m - 1 == 0 && s - 1 == 0)
+    {
+        ui->minsLabel->setText("Minutes");
+        ui->secsLabel->setText("Seconds");
+    }
+    if (s - 1 == 0)
+    {
+        ui->secsLabel->setText("Seconds");
+    }
+    //count down the lcdNumbers
     if (m == 0 && s == 0) {
         nextTimerState();
     } else if(s == 0)
@@ -192,6 +196,22 @@ void MainWindow::on_actionAbout_triggered()
     aboutWindow.exec();
 }
 
+//auto generated slot functions
+void MainWindow::on_startButton_clicked()
+{
+    if(timer->isActive())
+    {
+    stopTimer();
+    resetWindowColor();
+    }
+    else
+    {
+    this->setWindowGradient();
+    startTimer();
+    }
+
+}
+
 void MainWindow::on_softResetButton_clicked()
 {
    ui->softResetButton->setEnabled(false);
@@ -207,17 +227,27 @@ void MainWindow::on_resetButton_clicked()
 
 void MainWindow::on_workSpin_valueChanged(int arg1)
 {
-    if (timerstate == WORK) {ui->minsDisplay->display(arg1);}
+    if (timerstate == WORK)
+    {
+        ui->minsDisplay->display(arg1);
+        ui->secsDisplay->display(0);
+    }
 }
 
 void MainWindow::on_shortRestSpin_valueChanged(int arg1)
 {
-   if (timerstate == SHORT_REST) {ui->minsDisplay->display(arg1);}
+   if (timerstate == SHORT_REST)
+   {
+       ui->minsDisplay->display(arg1);
+       ui->secsDisplay->display(0);
+   }
 }
 
 void MainWindow::on_longRestSpin_valueChanged(int arg1)
 {
-   if (timerstate == LONG_REST) {ui->minsDisplay->display(arg1);}
+   if (timerstate == LONG_REST)
+   {
+       ui->minsDisplay->display(arg1);
+       ui->secsDisplay->display(0);
+   }
 }
-
-
