@@ -24,7 +24,16 @@ public:
     ~MainWindow();
 
 private slots:
+    //ui generated slots
     void on_startButton_clicked();
+    void on_actionAbout_triggered();
+    void on_resetButton_clicked();
+    void on_workSpin_valueChanged(int arg1);
+    void on_shortRestSpin_valueChanged(int arg1);
+    void on_longRestSpin_valueChanged(int arg1);
+    void on_softResetButton_clicked();
+
+    //Sean generated slots
     void lcd_countDown();
     void startTimer();
     void stopTimer();
@@ -32,23 +41,17 @@ private slots:
     void fullResetTimer();
     void nextTimerState();
     int getCurrentStateMax();
-    void on_actionAbout_triggered();
     void setWindowGradient();
     void resetWindowColor();
-    void on_resetButton_clicked();
 
-    void on_workSpin_valueChanged(int arg1);
 
-    void on_shortRestSpin_valueChanged(int arg1);
-
-    void on_longRestSpin_valueChanged(int arg1);
-
-    void on_softResetButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
+    //timerstate is the pomodoro phase
     TimerState timerstate = WORK;
+    //iShortRestCount counts the amount of times there's a short rest to schedule a long rest
     int iShortRestCount;
 };
 #endif // MAINWINDOW_H

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
 
+//constructor and destructor
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -22,6 +23,7 @@ float timeToFloat(int m, int s, int totalm)
     float f = (float)(m*60 + s) / (float)(totalm * 60);
     return f;
 }
+
 QColor floatToRGB(float f)
 {
     QColor color;
